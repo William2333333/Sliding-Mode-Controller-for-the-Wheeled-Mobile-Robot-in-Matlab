@@ -100,7 +100,7 @@ v_r \sin \theta_e \\
 \end{bmatrix}, \quad \mathbf{E} = \begin{bmatrix}
 0 & -\left(c_1+\frac{x_e}{1+y_e^2}\right) \\
 -1 & y_e
-\end{bmatrix} 
+\end{bmatrix}
 \end{aligned}
 $$
 
@@ -109,10 +109,10 @@ The main simulation results with a circle reference trajectory with initial cond
 
 
 
-![tracking errors.jpg](./figures/tracking errors.jpg)
+![tracking errors.jpg](figures\tracking_errors.jpg)
 
 
 
 
-![trajectory tracking.jpg](./figures/tracking errors.jpg)
+![trajectory tracking.jpg](figures\trajectory_tracking.jpg)
 
