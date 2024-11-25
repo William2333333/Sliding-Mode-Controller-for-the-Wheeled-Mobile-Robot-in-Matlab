@@ -75,6 +75,7 @@ sigma1 = c1 * theta_e + atan(ye);
     w = u(2);
 ```
 
+$$
 \begin{aligned}
 \sigma &= \begin{bmatrix}
 \sigma_1 \\
@@ -83,6 +84,7 @@ sigma1 = c1 * theta_e + atan(ye);
 c_1 \theta_e + \tan^{-1}(y_e) \\
 x_e
 \end{bmatrix} \\
+\\
 \mathbf{u} &= -\mathbf{E}^{-1} \left[ \mathbf{J}_n \begin{bmatrix}
 v_r \cos \theta_e \\
 v_r \sin \theta_e \\
@@ -91,14 +93,16 @@ v_r \sin \theta_e \\
 \eta_1 \operatorname{sgn}(\sigma_1) \\
 \eta_2 \operatorname{sgn}(\sigma_2)
 \end{bmatrix} \right] \\
+\\
 \mathbf{J}_n &= \begin{bmatrix}
 0 & \frac{1}{1+y_e^2} & 0 \\
 1 & 0 & 0
 \end{bmatrix}, \quad \mathbf{E} = \begin{bmatrix}
 0 & -\left(c_1+\frac{x_e}{1+y_e^2}\right) \\
 -1 & y_e
-\end{bmatrix} .
+\end{bmatrix} 
 \end{aligned}
+$$
 
 # Experiments
 The main simulation results with a circle reference trajectory with initial condition $q_r(0, 0, π4 )$, reference control pair $v_r = 0.25, ω_r = 0.5$ and initial posture of the actual robot $q(−0.2, −0.3, 0)$ are shown in below figures.
