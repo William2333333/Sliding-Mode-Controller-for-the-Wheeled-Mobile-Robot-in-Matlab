@@ -45,6 +45,8 @@ qe = [xe; ye; theta_e];
 
 ```
 
+The github's markdown is not that full to show the code, so I show the equation in the following picture.
+![eq1.png](./figures/eq1.png)
 $$
 \begin{gathered}
 \mathbf{q}_e = \begin{bmatrix}
@@ -103,6 +105,7 @@ v_r \sin \theta_e \\
 \end{bmatrix}
 \end{aligned}
 $$
+![eq2.png](./figures/eq2.png)
 
 # Experiments
 The main simulation results with a circle reference trajectory with initial condition $q_r(0, 0, π4 )$, reference control pair $v_r = 0.25, ω_r = 0.5$ and initial posture of the actual robot $q(−0.2, −0.3, 0)$ are shown in below figures.
