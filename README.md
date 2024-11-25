@@ -109,10 +109,10 @@ The main simulation results with a circle reference trajectory with initial cond
 
 
 
-![tracking errors.jpg](figures/tracking errors.jpg)
+![tracking errors.jpg](./figures/tracking errors.jpg)
 
 
 
 
-![trajectory tracking.jpg](figures/tracking errors.jpg)
+![trajectory tracking.jpg](./figures/tracking errors.jpg)
 
