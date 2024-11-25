@@ -75,7 +75,6 @@ sigma1 = c1 * theta_e + atan(ye);
     w = u(2);
 ```
 
-$$
 \begin{aligned}
 \sigma &= \begin{bmatrix}
 \sigma_1 \\
@@ -100,7 +99,6 @@ v_r \sin \theta_e \\
 -1 & y_e
 \end{bmatrix} .
 \end{aligned}
-$$
 
 # Experiments
 The main simulation results with a circle reference trajectory with initial condition $q_r(0, 0, π4 )$, reference control pair $v_r = 0.25, ω_r = 0.5$ and initial posture of the actual robot $q(−0.2, −0.3, 0)$ are shown in below figures.
