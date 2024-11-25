@@ -46,7 +46,9 @@ qe = [xe; ye; theta_e];
 ```
 
 The github's markdown is not that full to show the code, so I show the equation in the following picture.
-![eq1.png](/figures/eq1.png)
+
+![eq2.png](/figures/eq2.png)
+
 $$
 \begin{gathered}
 \mathbf{q}_e = \begin{bmatrix}
@@ -77,7 +79,8 @@ sigma1 = c1 * theta_e + atan(ye);
     w = u(2);
 ```
 
-![eq2.png](/figures/eq2.png)
+![eq3.png](/figures/eq3.png)
+
 $$
 \begin{aligned}
 \sigma &= \begin{bmatrix}
