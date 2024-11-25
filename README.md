@@ -84,6 +84,7 @@ $$
 c_1 \theta_e + \tan^{-1}(y_e) \\
 x_e
 \end{bmatrix} \\
+\\
 \mathbf{u} &= -\mathbf{E}^{-1} \left[ \mathbf{J}_n \begin{bmatrix}
 v_r \cos \theta_e \\
 v_r \sin \theta_e \\
@@ -92,13 +93,14 @@ v_r \sin \theta_e \\
 \eta_1 \operatorname{sgn}(\sigma_1) \\
 \eta_2 \operatorname{sgn}(\sigma_2)
 \end{bmatrix} \right] \\
+\\
 \mathbf{J}_n &= \begin{bmatrix}
 0 & \frac{1}{1+y_e^2} & 0 \\
 1 & 0 & 0
 \end{bmatrix}, \quad \mathbf{E} = \begin{bmatrix}
 0 & -\left(c_1+\frac{x_e}{1+y_e^2}\right) \\
 -1 & y_e
-\end{bmatrix} .
+\end{bmatrix} 
 \end{aligned}
 $$
 
@@ -107,10 +109,10 @@ The main simulation results with a circle reference trajectory with initial cond
 
 
 
-![tracking errors.jpg](../_resources/tracking%20errors.jpg)
+![tracking errors.jpg](./figures/tracking errors.jpg)
 
 
 
 
-![trajectory tracking.jpg](../_resources/trajectory%20tracking.jpg)
+![trajectory tracking.jpg](./figures/tracking errors.jpg)
 
