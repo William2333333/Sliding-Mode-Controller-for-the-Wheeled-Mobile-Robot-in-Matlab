@@ -45,10 +45,6 @@ qe = [xe; ye; theta_e];
 
 ```
 
-The github's markdown is not that full to show the code, so I show the equation in the following picture.
-
-![eq2.png](/figures/eq2.png)
-
 $$
 \begin{gathered}
 \mathbf{q}_e = \begin{bmatrix}
@@ -79,8 +75,6 @@ sigma1 = c1 * theta_e + atan(ye);
     w = u(2);
 ```
 
-![eq3.png](/figures/eq3.png)
-
 $$
 \begin{aligned}
 \sigma &= \begin{bmatrix}
@@ -90,7 +84,6 @@ $$
 c_1 \theta_e + \tan^{-1}(y_e) \\
 x_e
 \end{bmatrix} \\
-\\
 \mathbf{u} &= -\mathbf{E}^{-1} \left[ \mathbf{J}_n \begin{bmatrix}
 v_r \cos \theta_e \\
 v_r \sin \theta_e \\
@@ -99,27 +92,25 @@ v_r \sin \theta_e \\
 \eta_1 \operatorname{sgn}(\sigma_1) \\
 \eta_2 \operatorname{sgn}(\sigma_2)
 \end{bmatrix} \right] \\
-\\
 \mathbf{J}_n &= \begin{bmatrix}
 0 & \frac{1}{1+y_e^2} & 0 \\
 1 & 0 & 0
 \end{bmatrix}, \quad \mathbf{E} = \begin{bmatrix}
 0 & -\left(c_1+\frac{x_e}{1+y_e^2}\right) \\
 -1 & y_e
-\end{bmatrix}
+\end{bmatrix} .
 \end{aligned}
 $$
-
 
 # Experiments
 The main simulation results with a circle reference trajectory with initial condition $q_r(0, 0, π4 )$, reference control pair $v_r = 0.25, ω_r = 0.5$ and initial posture of the actual robot $q(−0.2, −0.3, 0)$ are shown in below figures.
 
 
 
-![tracking errors.jpg](figures/tracking_errors.jpg)
+![tracking errors.jpg](../_resources/tracking%20errors.jpg)
 
 
 
 
-![trajectory tracking.jpg](figures/trajectory_tracking.jpg)
+![trajectory tracking.jpg](../_resources/trajectory%20tracking.jpg)
 
