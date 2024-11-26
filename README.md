@@ -42,32 +42,16 @@ qe = [xe; ye; theta_e];
 
 ```
 
-The github's markdown is not that full to show the code, so I show the equation in the following picture.
 
 ![eq2.png](/figures/eq2.png)
 
-$$
-\begin{gathered}
-\mathbf{q}_e = \begin{bmatrix}
-x_e \\
-y_e \\
-\theta_e
-\end{bmatrix} = T(\mathbf{q})\left(\mathbf{q}_r - \mathbf{q}\right), \\
-
-T(\mathbf{q}) = \begin{bmatrix}
-\cos \theta & \sin \theta & 0 \\
--\sin \theta & \cos \theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\end{gathered}
-$$
 
 ## Nonlinear silding mode control method
 
 Define the input $u, η1,η2$ are positive reaching gains, $J_n$ is the Jacobian Matrix of the sliding functions.
 
 ```
-sigma1 = c1 * theta_e + atan(ye);
+    sigma1 = c1 * theta_e + atan(ye);
     sigma2 = xe;
     Jn = [0, 1/(1 + ye^2), 0; 1, 0, 0];
     E = [0, -(c1 + xe/(1 + ye^2)); -1, ye];
@@ -78,45 +62,29 @@ sigma1 = c1 * theta_e + atan(ye);
 
 ![eq3.png](/figures/eq3.png)
 
-$$
-\begin{aligned}
-\sigma &= \begin{bmatrix}
-\sigma_1 \\
-\sigma_2
-\end{bmatrix} = \begin{bmatrix}
-c_1 \theta_e + \tan^{-1}(y_e) \\
-x_e
-\end{bmatrix} \\
-\\
-\mathbf{u} &= -\mathbf{E}^{-1} \left[ \mathbf{J}_n \begin{bmatrix}
-v_r \cos \theta_e \\
-v_r \sin \theta_e \\
-\omega_r
-\end{bmatrix} + \begin{bmatrix}
-\eta_1 \operatorname{sgn}(\sigma_1) \\
-\eta_2 \operatorname{sgn}(\sigma_2)
-\end{bmatrix} \right] \\
-\\
-\mathbf{J}_n &= \begin{bmatrix}
-0 & \frac{1}{1+y_e^2} & 0 \\
-1 & 0 & 0
-\end{bmatrix}, \quad \mathbf{E} = \begin{bmatrix}
-0 & -\left(c_1+\frac{x_e}{1+y_e^2}\right) \\
--1 & y_e
-\end{bmatrix}
-\end{aligned}
-$$
+## State update
+
+Inside the loop, the state of the robot will be updated by the following code, adding the influence of the disturbance.
+
+```
+    disturbance = 0.001 * sin(2 * pi * t);
+```
+```
+    q_dot = [v * cos(q(3)); v * sin(q(3)); w];
+    disturbance_array = [disturbance(k);disturbance(k);disturbance(k)];
+    q = q + q_dot * dt+ disturbance_array;
+```
 
 
-# Experiments
-The main simulation results with a circle reference trajectory with initial condition $q_r(0, 0, π4 )$, reference control pair $v_r = 0.25, ω_r = 0.5$ and initial posture of the actual robot $q(−0.2, −0.3, 0)$ are shown in below figures.
+# Experiment
+The main simulation results with a circle reference trajectory with initial condition $q_r(0, 0, π4 )$, reference control pair $v_r = 0.25, ω_r = 0.5$ and initial posture of the actual robot $q(−0.4, 0.4, 0)$ are shown in below figures.
 
 
 
-![tracking errors.jpg](figures/tracking_errors.jpg)
+![tracking errors.jpg](figures/Tracking_errors.jpg)
 
 
 
 
-![trajectory tracking.jpg](figures/trajectory_tracking.jpg)
+![trajectory tracking.jpg](figures/Trajectory_Tracking.jpg)
 
