@@ -1,6 +1,6 @@
 # Original paper
 
-This term-work inspired fron the article: [Nonlinear Sliding Mode Control of a Two-Wheeled Mobile](https://discovery.ucl.ac.uk/id/eprint/1551571/1/Spurgeon_authorFinalVersion.pdf)
+This team-work is inspired from the article: [Nonlinear Sliding Mode Control of a Two-Wheeled Mobile](https://discovery.ucl.ac.uk/id/eprint/1551571/1/Spurgeon_authorFinalVersion.pdf)
 
 # Work Description
 
@@ -31,7 +31,8 @@ v \\
 \omega_R \\
 \omega_L
 \end{array}\right] \\
-\sigma_1&=c_1 \theta_e+\tan ^{-1}\left(y_e\right)
+
+<!-- \sigma_1&=c_1 \theta_e+\tan ^{-1}\left(y_e\right) -->
 \end{aligned}
 $$
 
