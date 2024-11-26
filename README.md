@@ -20,20 +20,16 @@ eta2 = 0.1; % Reaching gain for sigma2
 ```
 
 $$
-\begin{aligned}
 \left[\begin{array}{c}
 v \\
 \omega
-\end{array}\right]&=\left[\begin{array}{cc}
+\end{array}\right]=\left[\begin{array}{cc}
 \frac{r}{2} & \frac{r}{2} \\
 \frac{r}{R} & -\frac{r}{R}
 \end{array}\right]\left[\begin{array}{l}
 \omega_R \\
 \omega_L
-\end{array}\right] \\
-
-<!-- \sigma_1&=c_1 \theta_e+\tan ^{-1}\left(y_e\right) -->
-\end{aligned}
+\end{array}\right] 
 $$
 
 ## Error analysis
