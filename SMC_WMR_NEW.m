@@ -12,8 +12,12 @@ t = 0:dt:t_end; % Time vector
 vr_ref = 0.25; % Linear velocity (m/s)
 wr_ref = 0.5; % Angular velocity (rad/s)
 
+% Disturbance
+disturbance = 0.001 * sin(2 * pi * t);
+
+
 % Initial conditions
-q = [-0.2; -0.3; 0]; % Initial state [x; y; theta]
+q = [-0.4; 0.4; 0]; % Initial state [x; y; theta]
 qr = [0; 0; pi/4]; % Reference initial state
 qe = [0; 0; 0]; % Error state
 
@@ -42,11 +46,12 @@ for k = 1:length(t)
     
     % Update state
     q_dot = [v * cos(q(3)); v * sin(q(3)); w];
-    q = q + q_dot * dt;
+    disturbance_array = [disturbance(k);disturbance(k);disturbance(k)];
+    q = q + q_dot * dt+ disturbance_array;
     
     % Update reference trajectory
     qr_dot = [vr_ref * cos(qr(3)); vr_ref * sin(qr(3)); wr_ref];
-    qr = qr + qr_dot * dt;
+    qr = qr + qr_dot * dt ;
     
     % Store data
     q_trajectory(:, k) = q;
@@ -84,3 +89,4 @@ ylabel('y (m)');
 legend('Reference Trajectory', 'Actual Trajectory');
 title('Trajectory Tracking');
 grid on;
+
