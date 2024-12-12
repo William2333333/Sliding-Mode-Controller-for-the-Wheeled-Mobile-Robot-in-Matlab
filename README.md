@@ -4,6 +4,7 @@ This team-work is inspired from the article: [Nonlinear Sliding Mode Control of 
 
 # Work Description
 
+Team members: Yihao Liao & Yiren Qiu & Ghous Iqbal
 We primarily reproduced the "Control Design of WMR" section from the paper, utilizing MATLAB for the control design of a two-wheeled mobile robot (WMR) system. A sliding surface was designed for the system, and its stability was analyzed. The tracking problem under reference trajectory constraints was considered, and it was proven that the stability of the sliding mode is asymptotically stable. Additionally, the reachability of the sliding mode was demonstrated.
 
 # Details Explanation
