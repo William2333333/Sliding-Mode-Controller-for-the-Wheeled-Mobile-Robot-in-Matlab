@@ -7,12 +7,19 @@ eta2 = 0.1; % Reaching gain for sigma2
 dt = 0.01; % Time step (seconds)
 t_end = 70; % Simulation end time (seconds)
 t = 0:dt:t_end; % Time vector
-circle_radius = 10; % 圆的半径 (单位：米)
 
 
-wr_ref = 0.5; % 圆周运动的角速度 (单位：rad/s)
-vr_ref = wr_ref * circle_radius; % 根据半径计算线速度
+A = 10; % Amplitude of the figure-8 (size of loops)
+omega = 2 * pi / t_end; % Angular velocity based on period T
+theta = omega * t; % Angle that changes with time
+sigma1_list = zeros(1,length(t));
+sigma2_list = zeros(1,length(t));
+v_list = zeros(1,length(t));
+w_list = zeros(1,length(t));
 
+% Reference trajectory parameters
+vr_ref = 0.25; % Linear velocity (m/s)
+wr_ref = 0.5; % Angular velocity (rad/s)
 
 % Disturbance
 disturbance = 0.001 * sin(2 * pi * t);
@@ -27,10 +34,6 @@ qe = [0; 0; 0]; % Error state
 q_trajectory = zeros(3, length(t));
 q_ref_trajectory = zeros(3, length(t));
 qe_trajectory = zeros(3, length(t));
-sigma1_list = zeros(1,length(t));
-sigma2_list = zeros(1,length(t));
-v_list = zeros(1,length(t));
-w_list = zeros(1,length(t));
 
 % Simulation loop
 for k = 1:length(t)
@@ -54,12 +57,28 @@ for k = 1:length(t)
     q_dot = [v * cos(q(3)); v * sin(q(3)); w];
     disturbance_array = [disturbance(k);disturbance(k);disturbance(k)];
     q = q + q_dot * dt+ disturbance_array;
-    %q = q + q_dot * dt;
     
-    % Update reference trajectory
-    qr_dot = [vr_ref * cos(qr(3)); vr_ref * sin(qr(3)); wr_ref];
 
-    qr = qr + qr_dot * dt ;
+    
+    % Calculate the position in the "8" trajectory
+    x_ref = A * sin(theta(k)); % Horizontal component
+    y_ref = A * sin(2 * theta(k)) / 2; % Vertical component scaled to create "8" shape
+    
+    % Compute the desired velocity in the "8" shape
+    x_dot_ref = A * omega * cos(theta(k));
+    y_dot_ref = A * omega * cos(2 * theta(k));
+
+    % Compute the desired acceleration in the "8" shape
+    x_ddot_ref = -A * omega^2 * sin(theta(k));
+    y_ddot_ref = -2 * A * omega^2 * sin(2 * theta(k));
+    
+    % Update reference orientation and angular velocity
+    vr_ref = sqrt(x_dot_ref^2 + y_dot_ref^2); % Linear velocity
+    wr_ref = (x_dot_ref * y_ddot_ref - y_dot_ref * x_ddot_ref) / vr_ref^2; % Angular velocity
+    
+    % Update the state
+    qr_dot = [x_dot_ref; y_dot_ref; wr_ref];
+    qr = qr + qr_dot * dt;
     
     % Store data
     q_trajectory(:, k) = q;
@@ -93,7 +112,7 @@ ylabel('\theta_e (rad)');
 grid on;
 
 figure;
-plot(q_ref_trajectory(1, :), q_ref_trajectory(2, :), 'r--', 'LineWidth', 3);
+plot(q_ref_trajectory(1, :), q_ref_trajectory(2, :), 'r--', 'LineWidth', 1.5);
 hold on;
 plot(q_trajectory(1, :), q_trajectory(2, :), 'b-', 'LineWidth', 1.5);
 xlabel('x (m)');
@@ -101,7 +120,6 @@ ylabel('y (m)');
 legend('Reference Trajectory', 'Actual Trajectory');
 title('Trajectory Tracking');
 grid on;
-
 figure;
 subplot(2,1,1);
 plot(t,sigma1_list(1,:));
@@ -127,7 +145,6 @@ plot(t,w_list(1,:));
 xlabel('Time (s)');
 ylabel('\w');
 grid on;
-
 
 
 
